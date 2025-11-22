@@ -1,1 +1,17 @@
-{}
+[
+{
+  "HomeUrl": "https://automationexercise.com/",
+  "Name": "Ibrahim Omran",
+  "FirstName": "Ibrahim",
+  "LastName": "Omran",
+  "Company": "Parotia",
+  "Address": "Alexandria",
+  "Zipcode": "12345",
+  "PhoneNumber": "+201025121569",
+  "Password": "123456Aa$",
+  "ValidEmail": "ibrahimmohamedfahmi1@gmail.com",
+  "InvalidEmail": "ibrahimmohamedfahmi1.com",
+  "SignUpUrl": "https://automationexercise.com/signup",
+  "CreatedAccountUrl": "https://automationexercise.com/account_created"
+}
+]

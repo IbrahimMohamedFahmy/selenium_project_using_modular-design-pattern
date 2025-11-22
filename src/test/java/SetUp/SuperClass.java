@@ -1,7 +1,11 @@
 package SetUp;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,12 +16,33 @@ import java.time.Duration;
 public class SuperClass
 {
     // Create the WebDriver as a Global variable
-    WebDriver driver;
+    public static WebDriver driver;
 
-    // Step 2: create a global variable for soft assert
+    // Create a global variable for soft assert
     public SoftAssert soft;
 
-@BeforeMethod
+    // Create Object From Class Select
+    public static void Select(By locator, String text)
+    {
+        Select select = new Select(driver.findElement(locator));
+        select.selectByValue(text);
+    };
+
+    // Create Scroll Method
+    public static void Scroll(WebElement element)
+    {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    };
+
+    // Create Method to Generate a Random Email
+    public static String getRandomEmail()
+    {
+        String randomPart = java.util.UUID.randomUUID().toString().substring(0, 8);
+        return "user_" + randomPart + "@test.com";
+    }
+
+
+    @BeforeMethod
 public void OpenDriver()
 {
     // Step 1: Create Object from
@@ -41,13 +66,11 @@ public void OpenDriver()
 
 @AfterMethod
 public void CloseDriver() throws InterruptedException {
-    // Step 1: Call `assertAll()` to check all assertions
-    soft.assertAll();
 
-    // Step 2: Manage unconditional synchronization
+    // Step 1: Manage unconditional synchronization
     Thread.sleep(3000);
 
-    //Step 3: Close Driver
+    //Step 2: Close Driver
     driver.quit();
 };
 }
