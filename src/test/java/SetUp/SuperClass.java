@@ -21,6 +21,8 @@ public class SuperClass
     // Create a global variable for soft assert
     public SoftAssert soft;
 
+    public WebDriverWait wait;
+
     // Create Object From Class Select
     public static void Select(By locator, String text)
     {
@@ -52,7 +54,7 @@ public void OpenDriver()
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     // Step 3: Manage Conditional Synchronisation "explicit wait"
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
     // Step 4: Manage Window Maximize
     driver.manage().window().maximize();
