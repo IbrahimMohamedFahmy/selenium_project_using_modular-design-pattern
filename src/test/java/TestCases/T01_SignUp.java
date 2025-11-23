@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.io.File;
@@ -102,12 +103,14 @@ public class T01_SignUp extends SuperClass
         driver.findElement(By.cssSelector("button[data-qa='create-account']")).click();
 
         // Step 28: Get The Current URL
+        wait.until(ExpectedConditions.urlToBe("https://automationexercise.com/account_created"));
         String CreatedAccountURL = driver.getCurrentUrl();
 
         // Step 29: Verify That The Current and Expected URLs for Created Account Page are Match
         soft.assertEquals(CreatedAccountURL, input.get("CreatedAccountUrl"));
 
         // Step 30: Get The Successful Text
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2.title.text-center b")));
         String ActualSuccessfulText = driver.findElement(By.cssSelector("h2[class='title text-center'] b")).getText();
 
         // Step 31: Verify That the Actual Successful Text and Expected Text are Match

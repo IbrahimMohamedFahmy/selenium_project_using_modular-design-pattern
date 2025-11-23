@@ -210,7 +210,8 @@ public class T04_CheckOut extends SuperClass
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
         // Step 21: Go to The CheckOut Page
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 22: Get Current Url
         String checkOutURL = driver.getCurrentUrl();
@@ -337,7 +338,8 @@ public class T04_CheckOut extends SuperClass
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
         // Step 19: Go to The CheckOut Page
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 20: Get Current Url
         String checkOutURL = driver.getCurrentUrl();
@@ -464,7 +466,8 @@ public class T04_CheckOut extends SuperClass
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
         // Step 19: Go to The CheckOut Page
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 20: Get Current Url
         String checkOutURL = driver.getCurrentUrl();
@@ -592,7 +595,8 @@ public class T04_CheckOut extends SuperClass
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
         // Step 19: Go to The CheckOut Page
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 20: Get Current Url
         String checkOutURL = driver.getCurrentUrl();
@@ -719,7 +723,8 @@ public class T04_CheckOut extends SuperClass
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
         // Step 19: Go to The CheckOut Page
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 20: Get Current Url
         String checkOutURL = driver.getCurrentUrl();
@@ -846,7 +851,8 @@ public class T04_CheckOut extends SuperClass
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
         // Step 19: Go to The CheckOut Page
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 20: Get Current Url
         String checkOutURL = driver.getCurrentUrl();
@@ -883,7 +889,8 @@ public class T04_CheckOut extends SuperClass
         soft.assertEquals(TotalProductPrice1, actualCartTotal);
 
         // Step 29: Get The Place Order Button
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 30: Get Current Url Of the Payment Page
         String PayPage = driver.getCurrentUrl();

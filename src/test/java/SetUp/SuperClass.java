@@ -54,7 +54,7 @@ public void OpenDriver()
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     // Step 3: Manage Conditional Synchronisation "explicit wait"
-    wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
     // Step 4: Manage Window Maximize
     driver.manage().window().maximize();

@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="TestSuite" parallel="classes" thread-count="4">
+<suite name="TestSuite" parallel="classes" thread-count="1">
     <listeners>
         <listener class-name="SetUp.Listeners"/>
     </listeners>

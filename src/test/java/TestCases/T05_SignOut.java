@@ -316,7 +316,8 @@ public class T05_SignOut extends SuperClass
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
         // Step 19: Go to The CheckOut Page
-        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+        WebElement checkoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn.btn-default.check_out")));
+        checkoutBtn.click();
 
         // Step 20: Get Current Url
         String checkOutURL = driver.getCurrentUrl();

@@ -20,8 +20,7 @@ public class Listeners implements ITestListener {
     ExtentTest test;
 
     @Override
-    public void onStart(ITestContext context)
-    {
+    public void onStart(ITestContext context) {
         String path = System.getProperty("user.dir") + "//reports//report.html";
 
         ExtentSparkReporter reporter = new ExtentSparkReporter(path);
@@ -44,8 +43,7 @@ public class Listeners implements ITestListener {
     }
 
     @Override
-    public void onTestFailure(ITestResult result)
-    {
+    public void onTestFailure(ITestResult result) {
         WebDriver driver = ((SuperClass) result.getInstance()).driver;
 
         try {
