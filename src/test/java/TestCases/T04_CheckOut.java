@@ -102,31 +102,46 @@ public class T04_CheckOut extends SuperClass
         // Step 27: Check expectedTotalPrice eq actualTotal
         soft.assertEquals(TotalProductPrice1, actualTotal);
 
-        // Step 23: Get Product Price for product-2
-        String priceText2 = driver.findElement(By.cssSelector("#product-2 .cart_price p")).getText();
-        double price2 = Double.parseDouble(priceText2.replace("Rs.", "").trim());
-
-        // Step 24: Get Product Quantity
-        String quantityText2 = driver.findElement(By.cssSelector("#product-2 .cart_quantity button")).getText();
-        int quantity2 = Integer.parseInt(quantityText2.trim());
-
-        // Step 25: Get The Total Expected Price
-        double TotalProductPrice2 = price2 * quantity2;
-
-        // Step 26: Get The Total Price Element
-        String actualTotalText2 = driver.findElement(By.cssSelector("#product-2 .cart_total_price")).getText();
-        double actualTotal2 = Double.parseDouble(actualTotalText2.replace("Rs.", "").trim());
-
         // Step 27: Check expectedTotalPrice eq actualTotal
-        soft.assertEquals(TotalProductPrice2, actualTotal2);
-
-        String actualCartTotalText = driver.findElement(By.xpath("(//p[@class='cart_total_price'])[3]")).getText();
+        String actualCartTotalText = driver.findElement(By.xpath("(//p[@class='cart_total_price'])[2]")).getText();
         double actualCartTotal = Double.parseDouble(actualCartTotalText.replace("Rs.", "").trim());
 
         // Step 28: Check The Price OF all Products On the Checkout Page
-        soft.assertEquals(TotalProductPrice1+TotalProductPrice2, actualCartTotal);
+        soft.assertEquals(TotalProductPrice1, actualCartTotal);
 
-        // Step 29: Call `assertAll()` to check all assertions
+        // Step 29: Get The Place Order Button
+        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+
+        // Step 30: Get Current Url Of the Payment Page
+        String PayPage = driver.getCurrentUrl();
+
+        // Step 31: Check the URLs
+        soft.assertEquals(PayPage, input.get("PaymentPage"));
+
+        // Step 32: Get the Text Filed For The Card Name
+        driver.findElement(By.cssSelector("input[name='name_on_card']")).sendKeys(input.get("CardName"));
+
+        // Step 33: Get the Text Filed For The Card Name
+        driver.findElement(By.cssSelector("input[name='card_number']")).sendKeys(input.get("CardNumber"));
+
+        // Step 34: Get the Text Filed For The CVC
+        driver.findElement(By.cssSelector("input[placeholder='ex. 311']")).sendKeys(input.get("CVC"));
+
+        // Step 35: Get the Text Filed For The Expired Day
+        driver.findElement(By.cssSelector("input[placeholder='MM']")).sendKeys(input.get("ED"));
+
+        // Step 36: Get the Text Filed For The Expired year
+        driver.findElement(By.cssSelector("input[placeholder='YYYY']")).sendKeys(input.get("YY"));
+
+        // Step 37: Click ON Submit Button
+        SuperClass.Scroll(driver.findElement(By.xpath("//h2[normalize-space()='Payment']")));
+        driver.findElement(By.cssSelector("#submit")).click();
+
+        // Step 38: Get SuccessFul Message and Verify it
+        String text = driver.findElement(By.cssSelector("div[class='col-sm-9 col-sm-offset-1'] p")).getText();
+        soft.assertEquals(text, "Congratulations! Your order has been confirmed!");
+
+        // Step 39: Call `assertAll()` to check all assertions
         soft.assertAll();
     };
 
@@ -166,61 +181,103 @@ public class T04_CheckOut extends SuperClass
         // Step 11: Check Actual and Expected URLs
         soft.assertEquals(CartURL, input.get("CartUrl"));
 
-        // Step 12: Go to The CheckOut Page
+        // Step 12: Get Products Page
+        driver.findElement(By.xpath("//u[normalize-space()='here']")).click();
+
+        // Step 13: Get the Target Element
+        WebElement productCard = driver.findElement(By.xpath("//p[text()='Blue Top']/ancestor::div[@class='productinfo text-center']"));
+
+        // Step 14: Scroll to Get The Element
+        SuperClass.Scroll(productCard);
+
+        // Step 15: click Add to Cart from same card
+        productCard.findElement(By.xpath(".//a[contains(@class,'add-to-cart')]")).click();
+
+        // Step 16: Get Successful Message of add product
+        WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Your product has been added to cart.']")));
+        String SM = popup.getText();
+
+        // Step 17: Check The Message
+        soft.assertEquals(SM, "Your product has been added to cart.");
+
+        // Step 18:Close popup
+        driver.findElement(By.xpath("//button[normalize-space()='Continue Shopping']")).click();
+
+        // Step 19: go to cart page
+        driver.findElement(By.xpath("//a[contains(text(),'Cart')]")).click();
+
+        // Step 20: Check Actual and Expected URLs
+        soft.assertEquals(CartURL, input.get("CartUrl"));
+
+        // Step 21: Go to The CheckOut Page
         driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
 
-        // Step 13: Get Current Url
+        // Step 22: Get Current Url
         String checkOutURL = driver.getCurrentUrl();
 
-        // Step 14: Verify the Expected and Current URLs
+        // Step 23: Verify the Expected and Current URLs
         soft.assertEquals(checkOutURL, input.get("CheckOutPage"));
 
-        // step 15: Scroll Down To Get Order Info
+        // step 24: Scroll Down To Get Order Info
         SuperClass.Scroll(driver.findElement(By.xpath("//h2[normalize-space()='Review Your Order']")));
 
-        // Step 16: Get Product Price
+        // Step 25: Get Product Price
         String priceText = driver.findElement(By.cssSelector("td[class='cart_price'] p")).getText();
         double price = Double.parseDouble(priceText.replace("Rs.", "").trim());
 
-        // Step 17: Get Product Quantity
+        // Step 26: Get Product Quantity
         String quantityText = driver.findElement(By.cssSelector(".cart_quantity button")).getText();
         int quantity = Integer.parseInt(quantityText.trim());
 
-        // Step 18: Get The Total Expected Price
+        // Step 27: Get The Total Expected Price
         double TotalProductPrice1 = price * quantity;
 
-        // Step 19: Get The Total Price Element
+        // Step 28: Get The Total Price Element
         String actualTotalText = driver.findElement(By.cssSelector(".cart_total_price")).getText();
         double actualTotal = Double.parseDouble(actualTotalText.replace("Rs.", "").trim());
 
-        // Step 20: Check expectedTotalPrice eq actualTotal
+        // Step 29: Check expectedTotalPrice eq actualTotal
         soft.assertEquals(TotalProductPrice1, actualTotal);
 
-        // Step 21: Get Product Price for product-2
-        String priceText2 = driver.findElement(By.cssSelector("#product-2 .cart_price p")).getText();
-        double price2 = Double.parseDouble(priceText2.replace("Rs.", "").trim());
-
-        // Step 22: Get Product Quantity
-        String quantityText2 = driver.findElement(By.cssSelector("#product-2 .cart_quantity button")).getText();
-        int quantity2 = Integer.parseInt(quantityText2.trim());
-
-        // Step 23: Get The Total Expected Price
-        double TotalProductPrice2 = price2 * quantity2;
-
-        // Step 24: Get The Total Price Element
-        String actualTotalText2 = driver.findElement(By.cssSelector("#product-2 .cart_total_price")).getText();
-        double actualTotal2 = Double.parseDouble(actualTotalText2.replace("Rs.", "").trim());
-
-        // Step 25: Check expectedTotalPrice eq actualTotal
-        soft.assertEquals(TotalProductPrice2, actualTotal2);
-
-        String actualCartTotalText = driver.findElement(By.xpath("(//p[@class='cart_total_price'])[3]")).getText();
+        String actualCartTotalText = driver.findElement(By.xpath("(//p[@class='cart_total_price'])[2]")).getText();
         double actualCartTotal = Double.parseDouble(actualCartTotalText.replace("Rs.", "").trim());
 
-        // Step 26: Check The Price OF all Products On the Checkout Page
-        soft.assertEquals(TotalProductPrice1+TotalProductPrice2, actualCartTotal);
+        // Step 30: Check The Price OF all Products On the Checkout Page
+        soft.assertEquals(TotalProductPrice1, actualCartTotal);
 
-        // Step 27: Call `assertAll()` to check all assertions
+        // Step 31: Get The Place Order Button
+        driver.findElement(By.cssSelector(".btn.btn-default.check_out")).click();
+
+        // Step 32: Get Current Url Of the Payment Page
+        String PayPage = driver.getCurrentUrl();
+
+        // Step 33: Check the URLs
+        soft.assertEquals(PayPage, input.get("PaymentPage"));
+
+        // Step 34: Get the Text Filed For The Card Name
+        driver.findElement(By.cssSelector("input[name='name_on_card']")).sendKeys(input.get("CardName"));
+
+        // Step 35: Get the Text Filed For The Card Name
+        driver.findElement(By.cssSelector("input[name='card_number']")).sendKeys(input.get("CardNumber"));
+
+        // Step 36: Get the Text Filed For The CVC
+        driver.findElement(By.cssSelector("input[placeholder='ex. 311']")).sendKeys(input.get("CVC"));
+
+        // Step 37: Get the Text Filed For The Expired Day
+        driver.findElement(By.cssSelector("input[placeholder='MM']")).sendKeys(input.get("ED"));
+
+        // Step 38: Get the Text Filed For The Expired year
+        driver.findElement(By.cssSelector("input[placeholder='YYYY']")).sendKeys(input.get("YY"));
+
+        // Step 39: Click ON Submit Button
+        SuperClass.Scroll(driver.findElement(By.xpath("//h2[normalize-space()='Payment']")));
+        driver.findElement(By.cssSelector("#submit")).click();
+
+        // Step 40: Get SuccessFul Message and Verify it
+        String text = driver.findElement(By.cssSelector("div[class='col-sm-9 col-sm-offset-1'] p")).getText();
+        soft.assertEquals(text, "Congratulations! Your order has been confirmed!");
+
+        // Step 41: Call `assertAll()` to check all assertions
         soft.assertAll();
     };
 

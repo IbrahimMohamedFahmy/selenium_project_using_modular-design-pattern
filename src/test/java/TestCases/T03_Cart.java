@@ -176,6 +176,9 @@ public class T03_Cart extends SuperClass
         soft.assertEquals(CartProductName1, productName1);
         soft.assertEquals(CartProductName2, productName2);
 
+        // Step 29: Clean The Product 2
+        driver.findElement(By.cssSelector("tr[id='product-2'] a[class='cart_quantity_delete']")).click();
+
         // Step 29: Call `assertAll()` to check all assertions
         soft.assertAll();
     };
