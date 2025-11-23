@@ -259,9 +259,6 @@ public class T03_Cart extends SuperClass
         soft.assertAll();
     };
 
-
-
-
     @DataProvider
     public Object[][] TestData() throws IOException
     {

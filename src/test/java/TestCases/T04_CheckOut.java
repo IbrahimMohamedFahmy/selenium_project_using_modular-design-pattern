@@ -917,11 +917,6 @@ public class T04_CheckOut extends SuperClass
         soft.assertAll();
     };
 
-
-
-
-
-
     @DataProvider
     public Object[][] TestData() throws IOException
     {

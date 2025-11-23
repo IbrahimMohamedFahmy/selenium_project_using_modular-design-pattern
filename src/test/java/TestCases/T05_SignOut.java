@@ -402,6 +402,25 @@ public class T05_SignOut extends SuperClass
 
     };
 
+    @Test(groups = {"Sad Scenarios", "All Scenarios"}, priority = 5, dataProvider = "TestData")
+    public void UserCanNotSignOutWithOutSignIn(HashMap<String, String> input)
+    {
+        // Step 1: Get the Current URL
+        String HomeURL = driver.getCurrentUrl();
+
+        // Step 2: verify That the Current URL and the HomeUrl are Match
+        soft.assertEquals(HomeURL, input.get("HomeUrl"));
+
+        // Step 3: Try locating SignOut button
+        List<WebElement> signOutBtn = driver.findElements(By.cssSelector("a[href='/logout']"));
+
+        // Step 4: Verify that the SignOut Button is NOT displayed
+        soft.assertTrue(signOutBtn.isEmpty(), "SignOut button should NOT be visible for non-logged user");
+
+        // Step 5: Call `assertAll()` to check all assertions
+        soft.assertAll();
+    };
+
     @DataProvider
     public Object[][] TestData() throws IOException
     {

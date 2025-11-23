@@ -249,7 +249,6 @@ public class T01_SignUp extends SuperClass
         soft.assertAll();
     };
 
-
     @DataProvider
     public Object[][] TestData() throws IOException
     {
