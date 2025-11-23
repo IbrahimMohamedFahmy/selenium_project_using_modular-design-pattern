@@ -31,6 +31,7 @@ selenium_project_using_modular-design-pattern/
 ├─ TestNGSadScenarios.xml
 └─ TestNG_HappyScenarios.xml
 ```
+```
 Test Scenarios:
 Happy Scenarios:
 
@@ -93,8 +94,8 @@ Test classes are independent and reusable.
 All locators and test data are externalized for better maintainability.
 
 How to Clone the Project
-1️⃣ Copy the GitHub Repository Link
 
+1️⃣ Copy the GitHub Repository Link
 Go to the project on GitHub:
 https://github.com/IbrahimMohamedFahmy/selenium_project_using_modular-design-pattern
 
@@ -103,7 +104,6 @@ Click the Code button and copy the HTTPS link:
 https://github.com/IbrahimMohamedFahmy/selenium_project_using_modular-design-pattern.git
 
 2️⃣ Open Terminal or Command Prompt
-
 Windows: Use Git Bash or Command Prompt
 
 Mac/Linux: Use Terminal
@@ -143,3 +143,4 @@ Passionate about software quality, test automation, and continuous improvement.
 📅 Last Updated
 
 November 2025
+```
