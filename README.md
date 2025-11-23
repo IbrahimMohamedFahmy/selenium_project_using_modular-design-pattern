@@ -97,20 +97,22 @@ How to Clone the Project
 
 1️⃣ Copy the GitHub Repository Link
 Go to the project on GitHub:
+```
 https://github.com/IbrahimMohamedFahmy/selenium_project_using_modular-design-pattern
-
+```
 Click the Code button and copy the HTTPS link:
-
+```
 https://github.com/IbrahimMohamedFahmy/selenium_project_using_modular-design-pattern.git
-
+```
 2️⃣ Open Terminal or Command Prompt
 Windows: Use Git Bash or Command Prompt
 
 Mac/Linux: Use Terminal
 
 3️⃣ Run the Git Clone Command
+```
 git clone https://github.com/IbrahimMohamedFahmy/selenium_project_using_modular-design-pattern.git
-
+```
 This will create a local copy of the project in a folder with the same name.
 
 4️⃣ Navigate to the Project Folder
