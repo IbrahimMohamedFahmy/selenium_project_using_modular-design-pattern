@@ -400,7 +400,6 @@ public class T05_SignOut extends SuperClass
 
         // Step 43: Call `assertAll()` to check all assertions
         soft.assertAll();
-
     };
 
     @Test(groups = {"Sad Scenarios", "All Scenarios"}, priority = 5, dataProvider = "TestData")
